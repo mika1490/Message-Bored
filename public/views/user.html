@@ -1,0 +1,23 @@
+<h1>{{'User' }}</h1>
+<div class="wrapper">
+
+  <div class="header">Users</div>
+
+  <div class="sub-header">
+    <div class="username">Username</div>
+    <div class="createdAt">Joined</div>
+ 
+  </div>
+
+ 
+    <div class="main-details">
+      <div class="username">
+        <a ng-href="/users/{{ id }}">{{ user.name }}</a>
+      </div>
+      <div class="createdAt">
+        {{ user.created_at}}
+      </div>      
+    </div>
+  </div>    
+
+

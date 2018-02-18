@@ -1,14 +1,14 @@
 const express = require(`express`);
 const bodyParser = require(`body-parser`);
 const path = require(`path`);
-const indexRoutes = require(`./routes/index`);
 const messagesRoutes = require(`./routes/messages`)
+const topicsRoutes = require(`./routes/topics`)
+const usersRoutes = require(`./routes/users`)
 const app = express();
 
 const PORT = process.env.PORT || 8080;
 
 
-const routes = require('./routes');
 const User = require(`./db/models/User`);
 const Message = require(`./db/models/Message`);
 const Topic = require(`./db/models/Topic`);
@@ -21,14 +21,17 @@ app.get(`/`, (req, res) => {
 })
 
 /* ROUTES */
-app.use(`/index`, indexRoutes);
-app.use(`/messages`, messagesRoutes)
+
+app.use(`/api/messages`, messagesRoutes)
+app.use(`/api/users`, usersRoutes)
+app.use(`/api/topics`, topicsRoutes)
 // app.use('/api', routes);
 
-/* RENDER */
-// app.get('*', (req, res) => {
-//   res.sendFile('index.html', { root : path.join(__dirname, '/public') });
-// });
+/* Angular */
+app.get(`/*`, (req, res) => {
+  return res.sendFile(__dirname + `/public/index.html`);
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server Listening On Port: ${PORT}`);

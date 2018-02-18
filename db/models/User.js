@@ -13,4 +13,4 @@ return this.hasMany(Message, `author_id`);
  }
 }
 
-module.exports = bookshelf.model(`User`,{tableName:  'User'});
+module.exports = bookshelf.model(`User`, User);
